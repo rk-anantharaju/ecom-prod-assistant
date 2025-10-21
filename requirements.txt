@@ -5,3 +5,4 @@ langchain_groq # Groq integration for LangChain
 python-dotenv
 streamlit
 ipykernel
+structlog

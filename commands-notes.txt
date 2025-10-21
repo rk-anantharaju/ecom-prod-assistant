@@ -1,0 +1,15 @@
+Install UV
+pip install uv
+
+Create Project with UV
+uv init <my-project-name>
+
+Create Virtual env
+uv venv <venv-name> --python <python-version> # install the py version if its not availalbe
+
+Install Requirements 
+uv pip install -r <file-path>
+
+UV - list packages and python env
+uv pip list
+uv python list 

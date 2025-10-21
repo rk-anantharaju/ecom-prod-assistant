@@ -2,7 +2,7 @@
 from pathlib import Path
 import os
 import yaml
-from logger.custom_logger import CustomLogger 
+from prod_assistant.logger.custom_logger import CustomLogger 
 
 def _project_root() -> Path:
     # .../utils/config_loader.py -> parents[1] == project root

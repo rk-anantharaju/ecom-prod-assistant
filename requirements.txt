@@ -6,3 +6,9 @@ python-dotenv
 streamlit
 ipykernel
 structlog
+beautifulsoup4
+undetected-chromedriver
+selenium
+langchain-astradb 
+langchain-google-genai  
+langchain_openai

@@ -2,11 +2,14 @@ import os
 import logging
 from datetime import datetime
 import structlog
+from pathlib import Path
 
 class CustomLogger:
     def __init__(self, log_dir="logs"):
+
+
         # Ensure logs directory exists
-        self.logs_dir = os.path.join(os.getcwd(), log_dir)
+        self.logs_dir = os.path.join(Path(__file__).resolve().parents[2], log_dir)
         os.makedirs(self.logs_dir, exist_ok=True)
 
         # Timestamped log file (for persistence)
@@ -47,7 +50,7 @@ class CustomLogger:
 
 
 
-if __name__ == "__main__":
-    logger = CustomLogger().get_logger(__file__)
-    logger.info("User uploaded a data file", user_id=123, filename="data.pdf")
-    logger.error("Data processing failed", error="File not found", user_id=123)
+# if __name__ == "__main__":
+#     logger = CustomLogger().get_logger(__file__)
+#     logger.info("User uploaded a data file", user_id=123, filename="data.pdf")
+#     logger.error("Data processing failed", error="File not found", user_id=123)

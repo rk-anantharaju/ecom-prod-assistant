@@ -14,6 +14,7 @@ import asyncio
 
 class ApiKeyManager:
     def __init__(self):
+
         load_dotenv()
         self.api_keys = {
             "OPENAI_API_KEY": os.getenv("OPENAI_API_KEY"),
@@ -29,7 +30,8 @@ class ApiKeyManager:
             if val:
                 log.info(f"{key} loaded from environment")
             else:
-                log.warning(f"{key} is missing from environment")
+                log.error(f"{key} is missing from environment")
+      
 
     def get(self, key: str):
         return self.api_keys.get(key)
@@ -51,7 +53,7 @@ class ModelLoader:
         """
         try:
             model_name = self.config["embedding_model"]["model_name"]
-            
+
             log.info("Loading embedding model", model=model_name)
 
             # Patch: Ensure an event loop exists for gRPC aio
@@ -61,7 +63,7 @@ class ModelLoader:
                 asyncio.set_event_loop(asyncio.new_event_loop())
 
             google_api_key = os.getenv("GOOGLE_API_KEY")
-            
+
             return GoogleGenerativeAIEmbeddings(
                 model=model_name,
                 google_api_key=google_api_key,  # self.api_key_mgr.get("GOOGLE_API_KEY")
@@ -74,6 +76,7 @@ class ModelLoader:
         """
         Load and return the configured LLM model.
         """
+        load_dotenv()
         llm_block = self.config["llm"]
         provider_key = os.getenv("LLM_PROVIDER", "openai")
 
